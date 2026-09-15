@@ -1,0 +1,38 @@
+resources:
+
+  jobs:
+
+    iris_ml_pipeline:
+
+      name: iris-mlops-pipeline
+
+      tasks:
+
+        - task_key: data_preparation
+
+          notebook_task:
+            notebook_path: ../notebooks/01_data_preparation
+
+        - task_key: feature_engineering
+
+          depends_on:
+            - task_key: data_preparation
+
+          notebook_task:
+            notebook_path: ../notebooks/02_feature_engineering
+
+        - task_key: training
+
+          depends_on:
+            - task_key: feature_engineering
+
+          notebook_task:
+            notebook_path: ../notebooks/03_train
+
+        - task_key: evaluation
+
+          depends_on:
+            - task_key: training
+
+          notebook_task:
+            notebook_path: ../notebooks/04_evaluate

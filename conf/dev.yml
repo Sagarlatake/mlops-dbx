@@ -1,0 +1,7 @@
+# conf/dev.yml
+
+catalog: mlops_demo
+schema: iris
+
+experiment_name: /Shared/iris-mlops-dev
+registered_model: mlops_demo.iris.iris_classifier
